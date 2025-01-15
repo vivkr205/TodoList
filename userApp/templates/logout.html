@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block titile %}
+    <title>Todo App - Logged out</title>
+    {% endblock titile %}
+
+{% block content %}
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; ">
+
+
+
+    <div style="margin: 50px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(73, 72, 70, 0.1); display: flex; flex-direction: column; align-items: center; max-width: 400px;">
+        <h2 style="color: #333;">Logged out successfully!</h2>
+        
+        <form method="POST" style="width: 100%; display: flex; flex-direction: column; gap: 15px;">
+         {% csrf_token %}
+         {{form.as_p}}
+         <div style="display: flex; justify-content: center;">
+            <a href="{% url 'login' %}">
+                <button type="button" class="btn btn-success" style="width=auto; margin-right:10px">Login</button>
+              </a>
+         </div>
+       
+        </form>
+    </div>
+</body>
+{% endblock content %}

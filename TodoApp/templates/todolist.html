@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block titile %}
+    <title>Todo App - Todolists</title>
+    {% endblock titile %}
+
+{% block msg %}
+  {%if messages%}
+    {% for msg in messages %}
+      {% if msg.tags == 'error' %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+        
+      {% endif %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width:10%; margin-left: 70px; border-radius: 20px;">
+        {{msg}}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {%endif%}
+{% endblock %}
+    
+{% block content %}
+<br>
+<br>
+
+
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="self" style="display: flex;justify-content: left; gap: 10px; margin-left: 70px; width:100%">
+    <input type="text" class="form-control" placeholder="New Task?" name="task" style="width: 30%; border-radius:15px;"required> 
+   
+    <button type="submit" class="btn btn-primary" style="border-radius:30px; width: 70px;">Submit</button>
+  </div>
+  
+  
+</form>
+<br>
+    <div class="container" style="border:1px solid; border-radius:20px; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); padding:20px; background-size: 200% 200%;">
+   
+        <table class="table table-striped table-hover table-bordered" style="border-radius: 10px; overflow: hidden;">
+            <thead>
+              <tr >
+                <th scope="col">S.no</th>
+                <th scope="col">Tasks</th>
+                <th scope="col">Status</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+        {% for i in all_tasks %}
+            {%if all_tasks%}
+                <tbody>
+                {%if i.done%}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td scope="row"><del>{{i.task}}</del></td>
+                    <td><a href="{% url 'mark_pending' i.id %}"><button type="button" class="btn btn-success">Mark as Pending</button></a></td>
+                    <td><a href="{% url 'edit_task' i.id %}"><button type="button" class="btn btn-outline-warning">Edit</button></a></td>
+                    <td><a href="{% url 'delete' i.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+                    </tr>
+                  
+                {%else %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td scope="row">{{i.task}}</td>
+                    <td><a href="{% url 'mark_done' i.id %}"><button type="button" class="btn btn-primary">Mark as completed..</button></a></td>
+                    <td><a href="{% url 'edit_task' i.id %}"><button type="button" class="btn btn-outline-warning">Edit</button></a></td>
+                    <td><a href="{% url 'delete' i.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+                  </tr>
+                {%endif %} 
+            {%endif%}
+        {% endfor %}
+        
+        </tbody>
+    </div>
+{% endblock content %}
+
+
+
+{% comment %}  {% endcomment %}
+
+

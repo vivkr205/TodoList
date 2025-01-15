@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titile %}
+    <title>Todo App - Home</title>
+    {% endblock titile %}
+
+{% block content %}
+   
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; text-align: center;">
+    <div style="max-width: 800px; margin: 50px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <div>
+    <style>
+        .image-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            margin: 20px;
+            transition: transform 0.3s ease-in-out;
+            cursor:pointer
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <div class="image-container">
+        <img src="{% static 'images/image4.jpg' %}">
+        <img src="{% static 'images/image2.jpg' %}">
+        <img src="{% static 'images/image3.jpg' %}">
+    </div>
+
+    </div>
+        <h1 style="color: #333;">Welcome to Todo App</h1>
+        <p style="color: #666;">Stay organized and boost your productivity with our simple and effective todo app.</p>
+        
+        <a href="{% url 'login'%}">
+        <button onclick="alert('Let’s Get Started!')" 
+            style="background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+            Get Started
+        </button>
+    </a>
+    </div>
+</body>
+{% endblock content %}
+
+
+
+

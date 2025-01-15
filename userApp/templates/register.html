@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block titile %}
+    <title>Todo App - Register</title>
+    {% endblock titile %}
+
+{% block content %}
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; ">
+
+    {%if messages%}
+        {% for msg in messages %}
+            {% if msg.tags == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+        
+            {% endif %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" style="width:10%; margin-left: 70px; border-radius: 20px;">
+            {{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {%endif%}
+
+    <div style="margin: 50px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(73, 72, 70, 0.1); display: flex; flex-direction: column; align-items: center; max-width: 400px;">
+        <h2 style="color: #333;">Register</h2>
+        <p style="color: #666;">Create an account to start using the app!</p>
+        
+        <form method="POST" style="width: 100%; display: flex; flex-direction: column; gap: 15px;">
+         {% csrf_token %}
+         {{register_form.as_p}}
+         <div style="display: flex; justify-content: center;">
+             <button type="submit" style="width: 30%; background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#45a049'" onmouseout="this.style.backgroundColor='#4CAF50';">Register</button>
+         </div>
+       
+        </form>
+    </div>
+</body>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block titile %}
+    <title>Todo App - Contact us</title>
+    {% endblock titile %}
+
+{% block content %}
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; text-align: center;">
+    <div style="max-width: 600px; margin: 50px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="color: #333;">Contact Us</h2>
+        <p style="color: #666;">Have questions? We'd love to hear from you!</p>
+        
+        <form action="#" method="POST" style="display: flex; flex-direction: column;">
+            <label for="name" style="text-align: left; margin-bottom: 5px;">Name:</label>
+            <input type="text" id="name" name="name" required style="padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            
+            <label for="email" style="text-align: left; margin-bottom: 5px;">Email:</label>
+            <input type="email" id="email" name="email" required style="padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            
+            <label for="message" style="text-align: left; margin-bottom: 5px;">Message:</label>
+            <textarea id="message" name="message" rows="5" required style="padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+            
+            <button type="submit" style="background: #28a745; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+        </form>
+    </div>
+</body>
+{% endblock content %}

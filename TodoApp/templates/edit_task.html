@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titile %}
+    <title>Todo App - Edit task</title>
+    {% endblock titile %}
+
+{% block content %}
+<div class="container">
+    <br>
+    {% if task_obj.manage_id == request.user %}
+     <form method="POST" class="row-cols-5">
+        {% csrf_token %}
+        <label class="col-lg-2"></label>
+        <input type="text" class="form-control" placeholder="{{task_obj.task}}" name="task" value="{{task_obj.task}}">
+        <input type="hidden" name="done" value="{{task_obj.done}}">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+     {% else %}
+     <h2>Not allowed!</h2>
+    {%endif%}
+</div>
+{% endblock %}
