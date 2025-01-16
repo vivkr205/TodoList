@@ -1,1 +1,1 @@
-web: source venv/bin/activate && gunicorn todo.wsgi
+web: todo venv/bin/activate && gunicorn todo.wsgi
