@@ -1,1 +1,1 @@
-web: todo venv/bin/activate && gunicorn todo.wsgi
+web: gunicorn todo.wsgi --bind 0.0.0.0:$PORT
